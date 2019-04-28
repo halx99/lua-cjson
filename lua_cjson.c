@@ -58,12 +58,6 @@
 #define CJSON_VERSION   "2.1devel"
 #endif
 
-#ifdef _MSC_VER
-#define CJSON_EXPORT    __declspec(dllexport)
-#else
-#define CJSON_EXPORT    extern
-#endif
-
 /* Workaround for Solaris platforms missing isinf() */
 #if !defined(isinf) && (defined(USE_INTERNAL_ISINF) || defined(MISSING_ISINF))
 #define isinf(x) (!isnan(x) && isnan((x) - (x)))
@@ -1437,7 +1431,7 @@ static int lua_cjson_safe_new(lua_State *l)
     return 1;
 }
 
-CJSON_EXPORT int luaopen_cjson(lua_State *l)
+LUALIB_API int luaopen_cjson(lua_State *l)
 {
     lua_cjson_new(l);
 
@@ -1451,7 +1445,7 @@ CJSON_EXPORT int luaopen_cjson(lua_State *l)
     return 1;
 }
 
-CJSON_EXPORT int luaopen_cjson_safe(lua_State *l)
+LUALIB_API int luaopen_cjson_safe(lua_State *l)
 {
     lua_cjson_safe_new(l);
 
