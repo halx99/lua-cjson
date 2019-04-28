@@ -11,7 +11,7 @@
 ##                          multi-threaded application. Requries _pthreads_.
 
 ##### Build defaults #####
-LUA_VERSION =       5.1
+LUA_VERSION =       5.3
 TARGET =            cjson.so
 PREFIX =            /usr/local
 #CFLAGS =            -g -Wall -pedantic -fno-inline
@@ -84,12 +84,12 @@ OBJS =              lua_cjson.o strbuf.o $(FPCONV_OBJS)
 
 .PHONY: all clean install install-extra doc
 
-.SUFFIXES: .html .txt
+.SUFFIXES: .html .adoc
 
 .c.o:
 	$(CC) -c $(CFLAGS) $(CPPFLAGS) $(BUILD_CFLAGS) -o $@ $<
 
-.txt.html:
+.adoc.html:
 	$(ASCIIDOC) -n -a toc $<
 
 all: $(TARGET)
