@@ -35,7 +35,9 @@
  *       time (30%) managing tables when parsing JSON since it is
  *       difficult to know object/array sizes ahead of time.
  */
-
+#if !defined(LUA_LIB)
+#define LUA_LIB
+#endif
 #include <assert.h>
 #include <string.h>
 #include <math.h>
