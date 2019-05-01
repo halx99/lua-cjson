@@ -1,5 +1,6 @@
 /* Lua CJSON - JSON support for Lua
  *
+ * Copyright (c) 2019 HALX99
  * Copyright (c) 2010-2012  Mark Pulford <mark@kyne.com.au>
  *
  * Permission is hereby granted, free of charge, to any person obtaining
@@ -44,6 +45,9 @@
 #include <limits.h>
 #include <lua.h>
 #include <lauxlib.h>
+#if defined(USING_LUAJIT)
+#include <luajit.h>
+#endif
 
 #include "strbuf.h"
 #include "fpconv.h"
@@ -1324,7 +1328,7 @@ static int json_decode(lua_State *l)
 
 /* ===== INITIALISATION ===== */
 
-#if LUA_VERSION_NUM < 502 && !defined(USING_LUAJIT)
+#if LUA_VERSION_NUM < 502 && (!defined(LUAJIT_VERSION_NUM) || LUAJIT_VERSION_NUM < 20100)
 /* Compatibility for Lua 5.1.
  *
  * luaL_setfuncs() is used to create a module table where the functions have
