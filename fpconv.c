@@ -123,10 +123,10 @@ double fpconv_strtod(const char *nptr, char **endptr)
     /* Duplicate number into buffer */
     if (buflen >= FPCONV_G_FMT_BUFSIZE) {
         /* Handle unusually large numbers */
-        buf = (char *)malloc(buflen + 1);
+        buf = malloc(buflen + 1);
         if (!buf) {
             fprintf(stderr, "Out of memory");
-            abort();
+            return 0;
         }
     } else {
         /* This is the common case.. */
