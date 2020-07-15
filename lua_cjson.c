@@ -1,6 +1,6 @@
 /* Lua CJSON - JSON support for Lua
  *
- * Copyright (c) 2019 HALX99
+ * Copyright (c) 2019-2020 HALX99
  * Copyright (c) 2010-2012  Mark Pulford <mark@kyne.com.au>
  *
  * Permission is hereby granted, free of charge, to any person obtaining
@@ -61,7 +61,7 @@
 #endif
 
 #ifndef CJSON_VERSION
-#define CJSON_VERSION   "2.1devel"
+#define CJSON_VERSION   "2.1.1"
 #endif
 
 /* Workaround for Solaris platforms missing isinf() */
